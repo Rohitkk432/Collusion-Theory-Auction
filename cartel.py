@@ -40,7 +40,7 @@ class CartelMember:
             if(self.bought_at[i]!=-1):
                 utility+=(self.valuations[i]-self.bought_at[i])
         utility+=self.kProfit
-        print('Cartel Memeber ',self.cartel_member_id,': utility = ',utility)
+        # print('Cartel Memeber ',self.cartel_member_id,': utility = ',utility)
         return utility
 
 class Cartel:
