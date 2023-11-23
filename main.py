@@ -40,11 +40,11 @@ def run_an_auction(objects,min_budget,max_budget,total_participants,cartel_membe
 
     avg_utility_individuals = total_utility_individuals/(individual_bidders-1) 
 
-    avg_cartel_members_util,cartel_leader_util = cartel.getUtility()
+    avg_cartel_members_util = cartel.getUtility()
 
     cartel_wins = cartel.cartel_wins
 
-    return avg_utility_individuals,avg_cartel_members_util,cartel_leader_util,cartel_wins
+    return avg_utility_individuals,avg_cartel_members_util,cartel_wins
 
 
 if __name__ == "__main__":
@@ -61,26 +61,22 @@ if __name__ == "__main__":
 
     total_avg_utils_individuals=0
     total_avg_cartel_utils=0
-    total_leader_utils = 0
     total_cartel_wins_allruns = 0
 
     for i in range(runs):
-        avg_utility_individuals,avg_cartel_members_util,cartel_leader_util,total_cartel_wins = run_an_auction(objects,min_budget,max_budget,total_participants,cartel_members,k)
+        avg_utility_individuals,avg_cartel_members_util,total_cartel_wins = run_an_auction(objects,min_budget,max_budget,total_participants,cartel_members,k)
         
         total_avg_utils_individuals +=  avg_utility_individuals
         total_avg_cartel_utils += avg_cartel_members_util
-        total_leader_utils += cartel_leader_util
         total_cartel_wins_allruns +=total_cartel_wins
 
     avg_avg_utils_individuals=total_avg_utils_individuals/runs
     avg_avg_cartel_utils=total_avg_cartel_utils/runs
-    avg_leader_utils=total_leader_utils/runs
     avg_cartel_wins=total_cartel_wins_allruns/runs
 
     print("============== ",runs," runs ==============")
     
     print("Avg of all runs (Avg utility of all non cartel members in a run) : ",avg_avg_utils_individuals)
     print("Avg of all runs (Avg utility of all cartel members in a run) : ",avg_avg_cartel_utils)
-    print("Avg of cartel leader utility of all runs : ",avg_leader_utils)
     print("Avg of cartel wins of all runs : ",avg_cartel_wins)
 
