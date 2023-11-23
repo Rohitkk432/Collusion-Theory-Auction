@@ -7,9 +7,11 @@ class CartelMember:
         self.k = k
         self.valuations = []
         self.bought_at = []
+        self.total_k_got=0
 
     def get_valuation_and_bid(self):
         self.budget+=self.k
+        self.total_k_got+=self.k
         valuation = random.uniform(50,75)
         bid = valuation-random.uniform(0,10)+(random.uniform(0,3)*self.k)
         self.valuations.append(valuation)
@@ -31,7 +33,7 @@ class CartelMember:
         for i in range(len(self.valuations)):
             if(self.bought_at[i]!=-1):
                 utility+=(self.valuations[i]-self.bought_at[i])
-
+        utility+=self.total_k_got
         # print('Cartel Memeber ',self.cartel_member_id,': utility = ',utility)
         return utility
 

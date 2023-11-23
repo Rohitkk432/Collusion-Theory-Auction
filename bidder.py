@@ -8,8 +8,10 @@ class Bidder:
         self.bought_at = []
 
     def get_valuation_and_bid(self):
+        
         valuation = random.uniform(50,75)
         bid = valuation-random.uniform(0,10)
+        
         self.valuations.append(valuation)
 
         if(self.budget>=bid):

@@ -54,7 +54,7 @@ if __name__ == "__main__":
     max_budget = 300
     total_participants=20
     cartel_members=5
-    k=1
+    k=0.1
 
     runs=100
 
