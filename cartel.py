@@ -1,19 +1,22 @@
 import random
 
 class CartelMember:
-    def __init__(self,id,budget,k):
+    def __init__(self,id,budget,k,min_val,max_val,max_bid_below_val):
         self.cartel_member_id=id
         self.budget = budget
         self.k = k
         self.valuations = []
         self.bought_at = []
         self.total_k_got=0
+        self.min_val=min_val
+        self.max_val=max_val
+        self.max_bid_below_val=max_bid_below_val
 
     def get_valuation_and_bid(self):
         self.budget+=self.k
         self.total_k_got+=self.k
-        valuation = random.uniform(50,75)
-        bid = valuation-random.uniform(0,10)+(random.uniform(0,3)*self.k)
+        valuation = random.uniform(self.min_val,self.max_val)
+        bid = valuation-random.uniform(0,self.max_bid_below_val)+random.uniform(0,self.k)
         self.valuations.append(valuation)
 
         if(self.budget>=bid):
@@ -59,8 +62,9 @@ class CartelLeader:
 class Cartel:
 
     #initializer / constructor
-    def __init__(self,members,id,k,budget):
+    def __init__(self,members,id,k,budget,min_val,max_val,max_bid_below_val):
         self.cartel_wins=0
+        self.theo_k=0
         self.members=members
         self.k=k
         self.cartel_id=id
@@ -71,9 +75,14 @@ class Cartel:
         self.cartel_second_highest_bid = 0
         self.auction_second_highest_bid = 0
 
+        self.min_val=min_val
+        self.max_val=max_val
+        self.max_bid_below_val=max_bid_below_val
+
+
         self.members_objects=[]
         for i in range(members):
-            self.members_objects.append(CartelMember(i,budget,k))
+            self.members_objects.append(CartelMember(i,budget,k,self.min_val,self.max_val,self.max_bid_below_val))
     
     def getCartelBid(self):
         self.leader.payK()
@@ -100,6 +109,8 @@ class Cartel:
             profit = max_second_price - self.auction_second_highest_bid
             self.leader.get_leader_profit(profit)
 
+            self.theo_k+=profit/self.members
+
             for i in range(self.members):
                 member = self.members_objects[i]
                 member.checkWon(self.highest_bidder_id,max_second_price)
@@ -121,7 +132,12 @@ class Cartel:
 
         leader_util = self.leader.getUtility()
 
+        theok=0
+        if self.cartel_wins>0:
+            theok=self.theo_k/self.cartel_wins
+            # print('Theo K avg: ',theok)
+
         # print("Avg Cartel Members Utility: ",avg_members_util)
 
-        return avg_members_util,leader_util
+        return avg_members_util,leader_util,theok
 
