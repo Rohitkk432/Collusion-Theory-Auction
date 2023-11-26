@@ -1,18 +1,20 @@
+import matplotlib.pyplot as plt 
+
 from cartel import Cartel
 from bidder import Bidder
 from auction import Auction
 
-def run_an_auction(objects,min_budget,max_budget,total_participants,cartel_members,k):
+def run_an_auction(objects,min_budget,max_budget,total_participants,cartel_members,k,min_val,max_val,max_bid_below_val):
 
     individual_bidders = total_participants-cartel_members
 
     auction = Auction(objects,individual_bidders)
     bidders = []
-    cartel = Cartel(cartel_members,0,k,max_budget)
+    cartel = Cartel(cartel_members,0,k,max_budget,min_val,max_val,max_bid_below_val)
 
     bidders.append(cartel)
     for i in range(1,individual_bidders):
-        bidder = Bidder(i,min_budget,max_budget)
+        bidder = Bidder(i,min_budget,max_budget,min_val,max_val,max_bid_below_val)
         bidders.append(bidder)
     
 
@@ -52,19 +54,31 @@ if __name__ == "__main__":
     objects = 10
     min_budget = 200
     max_budget = 300
-    total_participants=20
     cartel_members=5
-    k=0.1
+    k=1
+    total_participants=20
 
-    runs=100
+    min_val=50
+    max_val=75
+
+    runs=500
 
 
+    Y1=[]
+    Y2=[]
+    Y3=[]
+
+    xAxis=[]
+
+    max_bid_below_val=10
+    # while(max_bid_below_val < 30 ):
+    #     max_bid_below_val+=1
     total_avg_utils_individuals=0
     total_avg_cartel_utils=0
     total_cartel_wins_allruns = 0
 
     for i in range(runs):
-        avg_utility_individuals,avg_cartel_members_util,total_cartel_wins = run_an_auction(objects,min_budget,max_budget,total_participants,cartel_members,k)
+        avg_utility_individuals,avg_cartel_members_util,total_cartel_wins = run_an_auction(objects,min_budget,max_budget,total_participants,cartel_members,k,min_val,max_val,max_bid_below_val)
         
         total_avg_utils_individuals +=  avg_utility_individuals
         total_avg_cartel_utils += avg_cartel_members_util
@@ -74,9 +88,27 @@ if __name__ == "__main__":
     avg_avg_cartel_utils=total_avg_cartel_utils/runs
     avg_cartel_wins=total_cartel_wins_allruns/runs
 
-    print("============== ",runs," runs ==============")
+    Y1.append(avg_avg_utils_individuals)
+    Y2.append(avg_avg_cartel_utils)
+    Y3.append(avg_cartel_wins)
+    xAxis.append(max_bid_below_val)
+    print("============== ",runs," runs , ",max_bid_below_val," max_bid_below_val ==============")
     
     print("Avg of all runs (Avg utility of all non cartel members in a run) : ",avg_avg_utils_individuals)
     print("Avg of all runs (Avg utility of all cartel members in a run) : ",avg_avg_cartel_utils)
     print("Avg of cartel wins of all runs : ",avg_cartel_wins)
 
+    # plt.figure()
+    # plt.plot(xAxis,Y1)
+    # plt.title("Non cartel Members utility changing reduced bid below val")
+    # plt.savefig('./outputs/BidRedY1.png')
+
+    # plt.figure()
+    # plt.plot(xAxis,Y2)
+    # plt.title("cartel Members utility changing reduced bid below val")
+    # plt.savefig('./outputs/BidRedY2.png')
+
+    # plt.figure()
+    # plt.plot(xAxis,Y3)
+    # plt.title("cartel wins changing reduced bid below val")
+    # plt.savefig('./outputs/BidRedY3.png')

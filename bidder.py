@@ -1,16 +1,19 @@
 import random
 
 class Bidder:
-    def __init__(self,id,min_budget,max_budget):
+    def __init__(self,id,min_budget,max_budget,min_val,max_val,max_bid_below_val):
         self.bidder_id=id
         self.budget = random.uniform(min_budget,max_budget)
         self.valuations = []
         self.bought_at = []
+        self.min_val=min_val
+        self.max_val=max_val
+        self.max_bid_below_val=max_bid_below_val
 
     def get_valuation_and_bid(self):
         
-        valuation = random.uniform(50,75)
-        bid = valuation-random.uniform(0,10)
+        valuation = random.uniform(self.min_val,self.max_val)
+        bid = valuation-random.uniform(0,self.max_bid_below_val)
         
         self.valuations.append(valuation)
 
