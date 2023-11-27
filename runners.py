@@ -114,7 +114,7 @@ def VaryK(hidePrints):
     print('-- total participants(bidders) = ',total_participants,"\n")
     print('-- cartel members(excluding leader)(have highest budget) = ',cartel_members,"\n")
     print('-- valuation = uniform random (',min_budget,',',max_budget,")","\n")
-    print('-- Bid reduced from valuation by = uniform random (0,',max_budget,")","\n")
+    print('-- Bid reduced from valuation by = uniform random (0,',max_bid_below_val,")","\n")
     print('-- k = 0.05 to 0.1',"\n\n")
 
     k=0.045
@@ -195,7 +195,7 @@ def Vary_CM_at_Diff_K(hidePrints):
     print('-- total participants(bidders) = ',total_participants,"\n")
     print('-- cartel members(excluding leader)(have highest budget) = 3 to 16',"\n")
     print('-- valuation = uniform random (',min_budget,',',max_budget,")","\n")
-    print('-- Bid reduced from valuation by = uniform random (0,',max_budget,")","\n")
+    print('-- Bid reduced from valuation by = uniform random (0,',max_bid_below_val,")","\n")
     print('-- k = 0.05, 0.07, 0.1',"\n\n")
 
     yAxis=[[],[],[]]
@@ -295,7 +295,7 @@ def VarySize(hidePrints):
     print('-- total participants(bidders) = 4 to 40 (cartel members * 2)',"\n")
     print('-- cartel members(excluding leader)(have highest budget) = 2 to 20',"\n")
     print('-- valuation = uniform random (',min_budget,',',max_budget,")","\n")
-    print('-- Bid reduced from valuation by = uniform random (0,',max_budget,")","\n")
+    print('-- Bid reduced from valuation by = uniform random (0,',max_bid_below_val,")","\n")
     print('-- k = 0.07',"\n\n")
 
     cartel_members=1
@@ -380,7 +380,7 @@ def Cartel_NoCartel():
     print('-- total participants(bidders) = ',total_participants,"\n")
     print('-- cartel members(excluding leader)(have highest budget) = ',cartel_members,"\n")
     print('-- valuation = uniform random (',min_budget,',',max_budget,")","\n")
-    print('-- Bid reduced from valuation by = uniform random (0,',max_budget,")","\n")
+    print('-- Bid reduced from valuation by = uniform random (0,',max_bid_below_val,")","\n")
     print('-- k = 0.07',"\n\n")
 
 
