@@ -164,12 +164,16 @@ def VaryK(hidePrints):
     plt.figure()
     plt.plot(xAxis,yKTheo)
     plt.title("k <= k theoretical changing k")
+    plt.xlabel("k")
+    plt.ylabel("runs k <= k theoretical / 500")
     plt.savefig('./results/Result1_KTheo.png')
 
     plt.figure()
     plt.plot(xAxis,yAxis)
     plt.axhline(y = 0, color = 'r', linestyle = ':', label = "red line") 
     plt.title("Avg utility of leader changing k")
+    plt.xlabel("k")
+    plt.ylabel("Avg Utility of Cartel Leader across 500 runs")
     plt.savefig('./results/Result1_LeaderUtil.png')
     plt.show()
 
@@ -250,6 +254,9 @@ def Vary_CM_at_Diff_K(hidePrints):
     plt.plot(xAxis,yKTheo[1],label='k=0.07',color='green')
     plt.plot(xAxis,yKTheo[2],label='k=0.1',color='red')
     plt.title("k <= k theoretical changing cartel members at different k values")
+    plt.xlabel("cartel members")
+    plt.ylabel("runs k <= k theoretical / 500")
+    plt.legend()
     plt.savefig('./results/Result2_KTheo.png')
 
     plt.figure()
@@ -257,6 +264,9 @@ def Vary_CM_at_Diff_K(hidePrints):
     plt.plot(xAxis,yAxis[1],label='k=0.07',color='green')
     plt.plot(xAxis,yAxis[2],label='k=0.1',color='red')
     plt.title("Avg utility of leader changing cartel members at different k values")
+    plt.xlabel("cartel members")
+    plt.ylabel("Avg Utility of Cartel Leader across 500 runs")
+    plt.legend()
     plt.savefig('./results/Result2_LeaderUtil.png')
     plt.show()
 
@@ -333,12 +343,16 @@ def VarySize(hidePrints):
     plt.figure()
     plt.plot(xAxis,yKTheo)
     plt.title("k <= k theoretical changing size of auction")
+    plt.xlabel("total participants")
+    plt.ylabel("runs k <= k theoretical / 500")
     plt.savefig('./results/Result3_KTheo.png')
 
     plt.figure()
     plt.plot(xAxis,yAxis)
     plt.axhline(y = 0, color = 'r', linestyle = ':', label = "red line") 
     plt.title("Avg utility of leader changing size of auction")
+    plt.xlabel("total participants")
+    plt.ylabel("Avg Utility of Cartel Leader across 500 runs")
     plt.savefig('./results/Result3_LeaderUtil.png')
     plt.show()
 
