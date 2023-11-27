@@ -10,12 +10,18 @@ if __name__ == "__main__":
     print("4) Cartel Vs No Cartel utility of same people with highest budget. \n")
     
     res = input('Choose (1-4): ')
+    print('\n')
+
+    hideRes = "1"
+    if int(res) < 4:
+        hideRes =  input('Hide the print of each 500 simulation  Yes(1) No(0) : ')
+        print('\n')
 
     if res=="1":
-        VaryK(True)
+        VaryK(hideRes=="1")
     elif res=="2":
-        Vary_CM_at_Diff_K(True)
+        Vary_CM_at_Diff_K(hideRes=="1")
     elif res=="3":
-        VarySize(True)
+        VarySize(hideRes=="1")
     elif res=="4":
         Cartel_NoCartel()

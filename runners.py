@@ -152,14 +152,14 @@ def VaryK(hidePrints):
         yKTheo.append(k_lt_ktheo)
         xAxis.append(k)
 
-    if not hidePrints:
+        if not hidePrints:
 
-        print("================== ",runs," runs, k=",k," ==================")
+            print("================== ",runs," runs, k=",k," ==================")
     
-        print("Avg of all runs (Avg utility of all non cartel members in a run) : ",avg_avg_utils_individuals)
-        print("Avg of all runs (Avg utility of all cartel members in a run) : ",avg_avg_cartel_utils)
-        print("Avg of cartel leader utility of all runs : ",avg_leader_utils)
-        print("Avg of cartel wins of all runs : ",avg_cartel_wins,"\n")
+            print("Avg of all runs (Avg utility of all non cartel members in a run) : ",avg_avg_utils_individuals)
+            print("Avg of all runs (Avg utility of all cartel members in a run) : ",avg_avg_cartel_utils)
+            print("Avg of cartel leader utility of all runs : ",avg_leader_utils)
+            print("Avg of cartel wins of all runs : ",avg_cartel_wins,"\n")
 
     plt.figure()
     plt.plot(xAxis,yKTheo)
