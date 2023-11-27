@@ -71,8 +71,6 @@ if __name__ == "__main__":
     xAxis=[]
 
     max_bid_below_val=10
-    # while(max_bid_below_val < 30 ):
-    #     max_bid_below_val+=1
     total_avg_utils_individuals=0
     total_avg_cartel_utils=0
     total_cartel_wins_allruns = 0
@@ -92,23 +90,8 @@ if __name__ == "__main__":
     Y2.append(avg_avg_cartel_utils)
     Y3.append(avg_cartel_wins)
     xAxis.append(max_bid_below_val)
-    print("============== ",runs," runs , ",max_bid_below_val," max_bid_below_val ==============")
+    print("============== ",runs," runs ==============")
     
     print("Avg of all runs (Avg utility of all non cartel members in a run) : ",avg_avg_utils_individuals)
     print("Avg of all runs (Avg utility of all cartel members in a run) : ",avg_avg_cartel_utils)
     print("Avg of cartel wins of all runs : ",avg_cartel_wins)
-
-    # plt.figure()
-    # plt.plot(xAxis,Y1)
-    # plt.title("Non cartel Members utility changing reduced bid below val")
-    # plt.savefig('./outputs/BidRedY1.png')
-
-    # plt.figure()
-    # plt.plot(xAxis,Y2)
-    # plt.title("cartel Members utility changing reduced bid below val")
-    # plt.savefig('./outputs/BidRedY2.png')
-
-    # plt.figure()
-    # plt.plot(xAxis,Y3)
-    # plt.title("cartel wins changing reduced bid below val")
-    # plt.savefig('./outputs/BidRedY3.png')
