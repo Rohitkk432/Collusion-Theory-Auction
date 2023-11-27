@@ -1,9 +1,13 @@
 import random
 
 class Bidder:
-    def __init__(self,id,min_budget,max_budget,min_val,max_val,max_bid_below_val):
+    def __init__(self,id,min_budget,max_budget,min_val,max_val,max_bid_below_val,highest):
         self.bidder_id=id
-        self.budget = random.uniform(min_budget,max_budget)
+        self.highest=highest
+        if self.highest:
+            self.budget=max_budget
+        else:
+            self.budget = random.uniform(min_budget,max_budget)
         self.valuations = []
         self.bought_at = []
         self.min_val=min_val
